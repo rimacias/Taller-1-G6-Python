@@ -8,20 +8,21 @@ class myclass:
     def validThis(self, dist):
         return dist is str
 
-class passagner:
+
+class passanger:
     def __init__(self, num):
         self.num = num
-    
+
     def validNumber(self):
         print("this working here")
-        return type(self.num) == int and self.num > 0
+        return self.num is int and self.num > 0
 
     def forHereDiscount(self):
         if 4 < self.num < 10:
             return 0.1
         elif self.num <= 10:
             return 0.2
-        #TODO: add more discount levels if needed
+        # TODO: add more discount levels if needed
         else:
             return 0.0
 
