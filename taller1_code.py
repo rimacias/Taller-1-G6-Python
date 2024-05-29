@@ -1,12 +1,12 @@
 class myclass:
     def __init__(self):
         self.myFav = {'Paris': 500, 'NYC': 600}
-    
+
     def get_extraCost(self, dist):
         return self.myFav.get(dist, 0)
-    
+
     def validThis(self, dist):
-        return type(dist) == str
+        return dist is str
 
 class passagner:
     def __init__(self, num):
