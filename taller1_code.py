@@ -26,6 +26,7 @@ class passanger:
         else:
             return 0.0
 
+
 class Plane:
     def __init__(self, dist, num, dur):
         self.myclass = myclass()
@@ -35,7 +36,10 @@ class Plane:
         self.seats = 200
 
     def sum(self):
-        if not self.myclass.validThis(self.dist) or not self.passanger.validNumber() or not self.total_TIME.is_valid_total_TIME():
+        isValidClass = self.myclass.validThis(self.dist)
+        isValidNumber = self.passanger.validNumber()
+        isValidTotalTime = self.total_TIME.is_valid_total_TIME()
+        if not isValidClass or not isValidNumber or not isValidTotalTime:
             return -1
 
         numberTotal = self.costBas
@@ -45,7 +49,7 @@ class Plane:
 
         discount = self.passanger.forHereDiscount()
         numberTotal = numberTotal - (numberTotal * discount)
-        
+
         return max(int(numberTotal), 0)
 
 class total_TIME:
