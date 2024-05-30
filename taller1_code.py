@@ -40,7 +40,7 @@ class TotalTime:
         return 100 if self.dur > 7 else 0
 
 
-class Vacation:
+class TripCostCalculator:
     costBas = 1000
 
     def __init__(self, dist, num, dur):
@@ -49,30 +49,29 @@ class Vacation:
         self.totalTime = TotalTime(dur)
         self.dist = dist
 
-    def sum(self):
-        isValidNumber = self.Passenger.validNumber()
-        isValidTotalTime = self.totalTime.is_valid_totalTime()
-        if self.dist is not str or not isValidNumber or not isValidTotalTime:
+    def calculateTripCost(self):
+        isValidNumber = self.passenger.validNumber()
+        isValidTotalTime = self.totalTime.isValidTotalTime()
+        if self.dist is str and isValidNumber and isValidTotalTime:
             return -1
-
         numberTotal = self.costBas
-        numberTotal += self.DestinationList.get_extraCost(self.dist)
+        numberTotal += self.DestinationList.getExtraCost(self.dist)
         numberTotal += self.totalTime.getFee()
         numberTotal -= self.totalTime.getPromotion()
 
-        discount = self.passagner.forHereDiscount()
+        discount = self.passenger.forHereDiscount()
         numberTotal = numberTotal - (numberTotal * discount)
 
         return max(int(numberTotal), 0)
 
 
 def main():
-    dist = "Paris"
-    num = 5
-    dur = 10
+    destination = "Paris"
+    passengers = 5
+    flightTime = 10
 
-    calculator = Vacation(dist, num, dur)
-    cost = calculator.sum()
+    calculator = TripCostCalculator(destination, passengers, flightTime)
+    cost = calculator.calculateTripCost()
 
     if cost == -1:
         print("Invalid input.")
